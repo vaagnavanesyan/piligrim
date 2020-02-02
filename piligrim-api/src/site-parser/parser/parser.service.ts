@@ -10,9 +10,9 @@ export class ParserService {
     const url = new URL(this.baseAddress);
     url.searchParams.set('page', page.toString());
     const {
-      data: { films, isLastPage },
+      data: { films, slider, isLastPage },
     } = await scrapeIt(url.href, FilmListSelector);
-    return { films, isLastPage } as FilmListResult;
+    return { films, slider, isLastPage } as FilmListResult;
   }
   async getFilm(id: string): Promise<Film> {
     const { data } = await scrapeIt(

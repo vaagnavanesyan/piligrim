@@ -9,4 +9,9 @@ export class ApiController {
   getFilm(@Param('id') id) {
     return this.parser.getFilm(id);
   }
+
+  @Get('/films')
+  getFilms() {
+    return this.parser.getFilms();
+  }
 }

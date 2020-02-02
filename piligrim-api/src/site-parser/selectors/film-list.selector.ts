@@ -1,4 +1,17 @@
 export const FilmListSelector = {
+  slider: {
+    listItem: '.nm-banner',
+    data: {
+      image: {
+        selector: 'img',
+        attr: 'src',
+      },
+      link: {
+        selector: 'a',
+        attr: 'href',
+      },
+    },
+  },
   films: {
     listItem: '.type-product',
     data: {
