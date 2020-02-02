@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ParserService } from './parser/parser.service';
 
-@Module({})
+@Module({
+  providers: [ParserService]
+})
 export class SiteParserModule {}
