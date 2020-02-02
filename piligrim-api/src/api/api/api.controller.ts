@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ParserService } from 'src/site-parser/parser/parser.service';
+import { ParserService } from '../../site-parser/parser/parser.service';
 
 @Controller('api')
 export class ApiController {

@@ -1,6 +1,6 @@
 import { Query, Resolver, Args } from '@nestjs/graphql';
-import { ParserService } from 'src/site-parser/parser/parser.service';
-import { DashboardResult } from 'src/site-parser/parser/types';
+import { DashboardResult } from '../../../site-parser/parser/types';
+import { ParserService } from '../../../site-parser/parser/parser.service';
 
 @Resolver(of => DashboardResult)
 export class DashboardResolver {

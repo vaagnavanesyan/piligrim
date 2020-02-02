@@ -1,4 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { SiteParserModule } from '../../../site-parser/site-parser.module';
 import { FilmsResolver } from './films.resolver';
 
 describe('FilmsResolver', () => {
@@ -6,6 +8,7 @@ describe('FilmsResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [SiteParserModule],
       providers: [FilmsResolver],
     }).compile();
 

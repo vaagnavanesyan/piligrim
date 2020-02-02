@@ -1,6 +1,6 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
-import { ParserService } from 'src/site-parser/parser/parser.service';
-import { Film } from 'src/site-parser/parser/types';
+import { ParserService } from '../../../site-parser/parser/parser.service';
+import { Film } from '../../../site-parser/parser/types';
 
 @Resolver(of => Film)
 export class FilmsResolver {

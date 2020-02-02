@@ -17,7 +17,8 @@ describe('ParserService', () => {
   });
 
   describe('Movie list', () => {
-    xit('should parse movies', async () => {
+    it('should parse movies', async () => {
+      jest.setTimeout(20000);
       const films = await parser.getDashboard();
       expect(films.films.length).toBeGreaterThan(0);
     });
