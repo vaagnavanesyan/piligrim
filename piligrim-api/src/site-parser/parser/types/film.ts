@@ -1,21 +1,15 @@
-import { Field, ID, ObjectType } from 'type-graphql';
-
+import { Field, ObjectType } from 'type-graphql';
+import { FestivalItem } from './festival-item';
+import { Image } from './image';
 @ObjectType()
 export class Film {
   @Field() description: string;
   @Field() name: string;
-
   @Field() duration: string;
   @Field() genre: string;
   @Field() about: string;
-  festivals: Array<{
-    title: string;
-    nomination: string;
-  }>;
-  images: Array<{
-    full: string;
-    preview: string;
-  }>;
+  @Field(type => [FestivalItem]) festivals: FestivalItem[];
+  @Field(type => [Image]) images: Image[];
   @Field() video: string;
   @Field() kinopoiskPage: string;
 }

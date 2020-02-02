@@ -9,12 +9,19 @@ type DashboardResult {
   isLastPage: Boolean!
 }
 
+type FestivalItem {
+  title: String!
+  nomination: String!
+}
+
 type Film {
   description: String!
   name: String!
   duration: String!
   genre: String!
   about: String!
+  festivals: [FestivalItem!]!
+  images: [Image!]!
   video: String!
   kinopoiskPage: String!
 }
@@ -25,6 +32,11 @@ type FilmSummary {
   duration: String!
   link: String!
   poster: String!
+}
+
+type Image {
+  full: String!
+  preview: String!
 }
 
 type Query {
