@@ -54,6 +54,8 @@ export const FilmPageSelector = {
   video: {
     selector: '#nm-featured-video-link', // vimeo.com -> player.vimeo.com/video/
     attr: 'href',
+    convert: (x: string) =>
+      x.replace('https://vimeo.com', 'https://player.vimeo.com/video'),
   },
   kinopoisk_page: {
     selector: '.icon-link-ext',
