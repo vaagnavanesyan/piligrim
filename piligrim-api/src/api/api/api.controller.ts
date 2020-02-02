@@ -12,6 +12,6 @@ export class ApiController {
 
   @Get('/films')
   getFilms() {
-    return this.parser.getFilms();
+    return this.parser.getDashboard();
   }
 }

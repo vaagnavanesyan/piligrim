@@ -1,18 +1,21 @@
-export interface Film {
-  description: string;
-  name: string;
-  duration: string;
-  genre: string;
-  about: string;
+import { Field, ID, ObjectType } from 'type-graphql';
+
+@ObjectType()
+export class Film {
+  @Field() description: string;
+  @Field() name: string;
+
+  @Field() duration: string;
+  @Field() genre: string;
+  @Field() about: string;
   festivals: Array<{
     title: string;
     nomination: string;
   }>;
-  // thumbnails: [],  //todo
   images: Array<{
     full: string;
     preview: string;
   }>;
-  video: string;
-  kinopoisk_page: string;
+  @Field() video: string;
+  @Field() kinopoiskPage: string;
 }

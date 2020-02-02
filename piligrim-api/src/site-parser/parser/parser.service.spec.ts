@@ -18,7 +18,7 @@ describe('ParserService', () => {
 
   describe('Movie list', () => {
     xit('should parse movies', async () => {
-      const films = await parser.getFilms();
+      const films = await parser.getDashboard();
       expect(films.films.length).toBeGreaterThan(0);
     });
 
@@ -31,7 +31,7 @@ describe('ParserService', () => {
       expect(film.genre).toBe('Документальный');
       expect(film.video).toBe('https://www.youtube.com/watch?v=TwMshLRtgoU');
       expect(film.festivals.length).toBeGreaterThanOrEqual(2);
-      expect(film.kinopoisk_page).toBeFalsy();
+      expect(film.kinopoiskPage).toBeFalsy();
     });
   });
 });

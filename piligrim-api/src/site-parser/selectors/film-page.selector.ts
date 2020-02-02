@@ -57,7 +57,7 @@ export const FilmPageSelector = {
     convert: (x: string) =>
       x.replace('https://vimeo.com', 'https://player.vimeo.com/video'),
   },
-  kinopoisk_page: {
+  kinopoiskPage: {
     selector: '.icon-link-ext',
     how: x => {
       if (!x[0] || !x[0].parent) {

@@ -1,4 +1,4 @@
-export const FilmListSelector = {
+export const DashboardSelector = {
   slider: {
     listItem: '.nm-banner',
     data: {

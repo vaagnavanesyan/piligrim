@@ -1,2 +1,2 @@
-export * from './film-list.selector';
+export * from './dashboard.selector';
 export * from './film-page.selector';
