@@ -10,7 +10,7 @@ export class ApiController {
     return this.parser.getFilm(id);
   }
 
-  @Get('/films')
+  @Get('/dashboard')
   getFilms() {
     return this.parser.getDashboard();
   }
