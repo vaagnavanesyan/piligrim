@@ -16,7 +16,7 @@ describe('ParserService', () => {
     expect(parser).toBeDefined();
   });
 
-  describe('Movie list', () => {
+  describe('Dashboard', () => {
     it('should parse movies', async () => {
       jest.setTimeout(20000);
       const films = await parser.getDashboard();
@@ -28,7 +28,7 @@ describe('ParserService', () => {
 
       const film = await parser.getFilm('teremok');
       expect(film.name).toBe('Теремок');
-      expect(film.duration).toBe('39 мин.');
+      expect(film.duration).toBe(39 * 60);
       expect(film.genre).toBe('Документальный');
       expect(film.video).toBe('https://www.youtube.com/watch?v=TwMshLRtgoU');
       expect(film.festivals.length).toBeGreaterThanOrEqual(2);

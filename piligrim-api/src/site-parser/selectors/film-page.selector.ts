@@ -7,7 +7,7 @@ export const FilmPageSelector = {
   },
   duration: {
     selector: '.single-genre-time',
-    convert: (x: string) => x.split('\n')[1].trim(),
+    convert: (x: string) => parseInt(x.split('\n')[1].trim(), 10) * 60,
   },
 
   about: {

@@ -22,7 +22,7 @@ export const DashboardSelector = {
       },
       duration: {
         selector: '.loop-genre-time',
-        convert: (x: string) => x.split('\n')[1].trim(),
+        convert: (x: string) => parseInt(x.split('\n')[1].trim(), 10) * 60,
       },
       link: { selector: '.nm-shop-loop-thumbnail > a', attr: 'href' },
       poster: {

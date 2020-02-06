@@ -5,7 +5,7 @@ import { Image } from './image';
 export class Film {
   @Field() description: string;
   @Field() name: string;
-  @Field() duration: string;
+  @Field() duration: number;
   @Field() genre: string;
   @Field() about: string;
   @Field(type => [FestivalItem]) festivals: FestivalItem[];
