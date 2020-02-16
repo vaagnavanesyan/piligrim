@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ParserService } from '../../site-parser/parser/parser.service';
 
 @Controller('api')
@@ -11,7 +11,7 @@ export class ApiController {
   }
 
   @Get('/dashboard')
-  getFilms() {
-    return this.parser.getDashboard();
+  dashboardPage(@Query('page') page: number = 0) {
+    return this.parser.getDashboard(page);
   }
 }
