@@ -17,7 +17,7 @@ type FestivalItem {
 type Film {
   description: String!
   name: String!
-  duration: String!
+  duration: Float!
   genre: String!
   about: String!
   festivals: [FestivalItem!]!
