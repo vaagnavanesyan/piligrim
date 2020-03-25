@@ -1,20 +1,42 @@
 import { Right, Thumbnail } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { Text, FlatList, StyleSheet, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { ApiService } from '../services/api-service';
 
 export const MoviesFeed = () => {
     const [dashboard, setDashboard] = useState([] as any);
-    const [page, setPage] = useState(1);
+    const [isLoading, setLoading] = useState(false);
+    const [page, setPage] = useState(0);
+    // idk better way how to implement multiple "Pull to refresh" and keep useEffect deendendent only on "page"
+    const [refresh, triggerRefresh] = useState(false);
+    const [stillScrolling, setScrolling] = useState(false);
 
     const fetchData = async () => {
+        // console.log(`Loading page: ${page}\tFeed length: ${dashboard.length}\tExpected: ${page * 36}`);
+        setLoading(true);
         const result = await new ApiService().getDashboard(page);
         setDashboard([...dashboard, ...result.films]);
-        setPage(page + 1);
+        setLoading(false);
     };
 
-    useEffect(() => { fetchData(); }, []);
+    useEffect(() => { fetchData(); }, [page, refresh]);
+
+    const doRefresh = () => {
+        setDashboard([]);
+        if (page === 0) {
+            triggerRefresh(!refresh)
+        } else {
+            setPage(0);
+        }
+    }
+
+    const loadMoreData = () => {
+        if (stillScrolling) {
+            setScrolling(false);
+            setPage(page + 1)
+        };
+    }
 
     return (
         <FlatList
@@ -23,9 +45,12 @@ export const MoviesFeed = () => {
             renderItem={({ item }) => <Movie movie={item} />}
             keyExtractor={(item: any) => item.link}
             initialNumToRender={10}
-            ListFooterComponent={Footer}
+            ListFooterComponent={isLoading ? Footer : null}
             onEndReachedThreshold={3}
-            onEndReached={() => fetchData()}
+            refreshing={false}
+            onRefresh={() => doRefresh()}
+            onMomentumScrollBegin={() => setScrolling(true)}
+            onEndReached={() => loadMoreData()}
         />
     );
 }
