@@ -1,4 +1,4 @@
-package com.piligrim;
+package com.vaagnavanesyan.piligrim;
 
 import android.app.Application;
 import android.content.Context;
