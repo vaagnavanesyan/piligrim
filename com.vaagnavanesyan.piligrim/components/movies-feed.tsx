@@ -1,20 +1,21 @@
+import { Right, Thumbnail } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, Text, View, FlatList, Image, TouchableOpacity, Dimensions, StyleSheet, Platform } from 'react-native';
+import { Text, FlatList, StyleSheet, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 
 import { ApiService } from '../services/api-service';
 
 export const MoviesFeed = () => {
     const [dashboard, setDashboard] = useState([] as any);
     const [page, setPage] = useState(1);
+
     const fetchData = async () => {
-        console.log(`Loading page: ${page}`)
         const result = await new ApiService().getDashboard(page);
         setDashboard([...dashboard, ...result.films]);
         setPage(page + 1);
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);
+    };
+
+    useEffect(() => { fetchData(); }, []);
+
     return (
         <FlatList
             style={styles.background}
@@ -22,72 +23,63 @@ export const MoviesFeed = () => {
             renderItem={({ item }) => <Movie movie={item} />}
             keyExtractor={(item: any) => item.link}
             initialNumToRender={10}
+            ListFooterComponent={Footer}
             onEndReachedThreshold={3}
             onEndReached={() => fetchData()}
         />
     );
 }
+class Movie extends React.Component<any>{
+    shouldComponentUpdate() {
+        return false;
+    }
+    render() {
+        return <TouchableOpacity
+            style={styles.movie}
+            onPress={() => console.log(this.props.movie.link)}
+            key={this.props.movie.name}
+        >
+            <Thumbnail square large source={{ uri: this.props.movie.poster }} style={styles.moviePoster} />
+            <View style={styles.movieTextContainer}>
+                <Text style={styles.movieName}>{this.props.movie.name}</Text>
+                <Text style={styles.movieGenre}>{this.props.movie.genre}</Text>
+            </View>
+            <Right>
+                <Text style={styles.movieDuration}>{this.props.movie.duration / 60} мин</Text>
+            </Right>
+        </TouchableOpacity>
+    }
+}
 
-const Movie = ({ movie }: any) =>
-    <TouchableOpacity
-        onPress={() => alert(movie.link)}
-        key={movie.name}
-        style={styles.film}>
-        <Image
-            style={styles.filmPoster}
-            source={{ uri: movie.poster }}
-        />
-        <Text style={styles.filmName}>{movie.name}</Text>
-        <Text style={styles.filmDuration}>{movie.duration / 60} мин</Text>
-        <Text style={styles.filmGenre}>{movie.genre}</Text>
-    </TouchableOpacity>
+const Footer = () => {
+    return <ActivityIndicator animating size="large" color={styles.movieName.color} />;
+};
 
-const { width, height } = Dimensions.get('window')
 const styles = StyleSheet.create({
     background: {
         backgroundColor: '#070215',
     },
-    slide: {
-        width: width - 60,
-        height: height / 4,
-    },
-    slideContainer: {
-        flex: 1,
-        marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-        backgroundColor: '#070215',
-        borderRadius: 8,
-    },
-    slideImage: {
-        ...StyleSheet.absoluteFillObject,
-        resizeMode: "contain",
-    },
-    gallery: {
+    movie: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        marginTop: 10
+        marginVertical: 10
     },
-    film: {
-
+    moviePoster: {
+        flex: 1
     },
-    filmPoster: {
-        width: width * .45,
-        height: width * .45,
-        marginTop: 10,
-        marginLeft: 5,
-        marginRight: 5
+    movieTextContainer: {
+        marginLeft: 10,
+        flex: 4
     },
-    filmName: {
+    movieName: {
         color: '#9B528E',
-        fontSize: 18, //fix issue with long strings
+        fontSize: 18
     },
-    filmDuration: {
+    movieDuration: {
         color: '#7992D2',
-        fontSize: 20
+        flex: 1
     },
-    filmGenre: {
+    movieGenre: {
         color: '#C7BDDF',
-        fontSize: 16,
     },
 })
