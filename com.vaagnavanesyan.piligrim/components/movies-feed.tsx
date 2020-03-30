@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { ApiService } from '../services/api-service';
+import { Slider } from './slider';
 
 export const MoviesFeed = () => {
     const [dashboard, setDashboard] = useState([] as any);
+    const [slider, setSlider] = useState([] as any);
     const [isLoading, setLoading] = useState(false);
     const [page, setPage] = useState(0);
     // idk better way how to implement multiple "Pull to refresh" and keep useEffect deendendent only on "page"
@@ -17,6 +19,7 @@ export const MoviesFeed = () => {
         setLoading(true);
         const result = await new ApiService().getDashboard(page);
         setDashboard([...dashboard, ...result.films]);
+        setSlider(result.slider);
         setLoading(false);
     };
 
@@ -42,6 +45,7 @@ export const MoviesFeed = () => {
         <FlatList
             style={styles.background}
             data={dashboard}
+            ListHeaderComponent={<Slider slider={slider} />}
             renderItem={({ item }) => <Movie movie={item} />}
             keyExtractor={(item: any) => item.link}
             initialNumToRender={10}

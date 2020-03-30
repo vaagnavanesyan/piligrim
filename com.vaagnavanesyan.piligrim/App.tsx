@@ -7,17 +7,16 @@
  *
  * @format
  */
-import { MoviesFeed } from './components/movies-feed';
 import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+
+import { MoviesFeed } from './components/movies-feed';
 
 const App = () => {
   return (
-    <>
-      <SafeAreaView style={{ flex: 1 }}>
-        <MoviesFeed />
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={{ flex: 1 }}>
+      <MoviesFeed />
+    </SafeAreaView>
   );
 };
 
