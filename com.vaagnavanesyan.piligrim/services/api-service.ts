@@ -1,9 +1,13 @@
 export class ApiService {
-  private readonly baseUrl = 'https://piligrim-app.herokuapp.com/api';
+  private static readonly baseUrl = 'https://piligrim-app.herokuapp.com/api';
 
-  public async getDashboard(page: number = 1) {
-    return fetch(`${this.baseUrl}/dashboard?page=${page}`).then(response =>
-      response.json(),
-    );
+  public static async getDashboard(page: number = 1) {
+    return fetch(
+      `${ApiService.baseUrl}/dashboard?page=${page}`,
+    ).then(response => response.json());
+  }
+
+  public static getAbsoluteUrl(part: string) {
+    return `https://piligrim.fund${part}`;
   }
 }

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Dimensions, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Platform, StyleSheet, TouchableOpacity, View, Linking } from 'react-native';
 import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import { ApiService } from '../services/api-service';
 
 const { width, height } = Dimensions.get('window')
 
 const renderSlide = ({ item }: any, parallaxProps: any) => {
     return (
-        <TouchableOpacity onPress={() => console.log(item.link)}>
+        <TouchableOpacity onPress={() => Linking.openURL(ApiService.getAbsoluteUrl(item.link))}>
             <View style={styles.slide}>
                 <ParallaxImage
                     source={{ uri: item.image }}
