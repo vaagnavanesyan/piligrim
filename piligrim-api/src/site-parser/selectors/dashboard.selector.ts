@@ -12,7 +12,7 @@ export const DashboardSelector = {
       },
     },
   },
-  films: {
+  movies: {
     listItem: '.type-product',
     data: {
       name: '.nm-shop-loop-details > h3',

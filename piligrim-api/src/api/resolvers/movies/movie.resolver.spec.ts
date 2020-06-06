@@ -1,18 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { SiteParserModule } from '../../../site-parser/site-parser.module';
-import { FilmsResolver } from './films.resolver';
+import { MovieResolver } from './movie.resolver';
 
-describe('FilmsResolver', () => {
-  let resolver: FilmsResolver;
+describe('MovieResolver', () => {
+  let resolver: MovieResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [SiteParserModule],
-      providers: [FilmsResolver],
+      providers: [MovieResolver],
     }).compile();
 
-    resolver = module.get<FilmsResolver>(FilmsResolver);
+    resolver = module.get<MovieResolver>(MovieResolver);
   });
 
   it('should be defined', () => {

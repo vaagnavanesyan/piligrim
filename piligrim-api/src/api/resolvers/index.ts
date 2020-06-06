@@ -1,2 +1,2 @@
-export * from './films/films.resolver';
+export * from './movies/movie.resolver';
 export * from './dashboard/dashboard.resolver';

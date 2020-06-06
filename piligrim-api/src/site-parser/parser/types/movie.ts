@@ -2,7 +2,7 @@ import { Field, ObjectType } from 'type-graphql';
 import { FestivalItem } from './festival-item';
 import { Image } from './image';
 @ObjectType()
-export class Film {
+export class Movie {
   @Field() description: string;
   @Field() name: string;
   @Field() duration: number;

@@ -19,20 +19,20 @@ describe('ParserService', () => {
   describe('Dashboard', () => {
     it('should parse movies', async () => {
       jest.setTimeout(20000);
-      const films = await parser.getDashboard();
-      expect(films.films.length).toBeGreaterThan(0);
+      const dashboard = await parser.getDashboard();
+      expect(dashboard.movies.length).toBeGreaterThan(0);
     });
 
     it('should parse movie', async () => {
       // TODO: move it to assets and then parse here
 
-      const film = await parser.getFilm('teremok');
-      expect(film.name).toBe('Теремок');
-      expect(film.duration).toBe(39 * 60);
-      expect(film.genre).toBe('Документальный');
-      expect(film.video).toBe('https://www.youtube.com/watch?v=TwMshLRtgoU');
-      expect(film.festivals.length).toBeGreaterThanOrEqual(2);
-      expect(film.kinopoiskPage).toBeFalsy();
+      const movie = await parser.getMovie('teremok');
+      expect(movie.name).toBe('Теремок');
+      expect(movie.duration).toBe(39 * 60);
+      expect(movie.genre).toBe('Документальный');
+      expect(movie.video).toBe('https://www.youtube.com/watch?v=TwMshLRtgoU');
+      expect(movie.festivals.length).toBeGreaterThanOrEqual(2);
+      expect(movie.kinopoiskPage).toBeFalsy();
     });
   });
 });

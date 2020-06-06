@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ApiController } from './api/api.controller';
 import { SiteParserModule } from '../site-parser/site-parser.module';
-import { FilmsResolver, DashboardResolver } from './resolvers';
+import { MovieResolver, DashboardResolver } from './resolvers';
 
 @Module({
   controllers: [ApiController],
   imports: [SiteParserModule],
-  providers: [FilmsResolver, DashboardResolver],
+  providers: [MovieResolver, DashboardResolver],
 })
 export class ApiModule {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as scrapeIt from 'scrape-it';
-import { DashboardResult, Film } from './types';
-import { FilmPageSelector, DashboardSelector } from '../selectors';
+import { DashboardResult, Movie } from './types';
+import { MoviePageSelector, DashboardSelector } from '../selectors';
 
 @Injectable()
 export class ParserService {
@@ -10,15 +10,15 @@ export class ParserService {
     const url = new URL(this.baseAddress);
     url.searchParams.set('page', page.toString());
     const {
-      data: { films, slider, isLastPage },
+      data: { movies, slider, isLastPage },
     } = await scrapeIt(url.href, DashboardSelector);
-    return { films, slider, isLastPage } as DashboardResult;
+    return { movies, slider, isLastPage } as DashboardResult;
   }
-  async getFilm(id: string): Promise<Film> {
+  async getMovie(id: string): Promise<Movie> {
     const { data } = await scrapeIt(
       `${this.baseAddress}/film/${id}`,
-      FilmPageSelector,
+      MoviePageSelector,
     );
-    return (data as unknown) as Film;
+    return (data as unknown) as Movie;
   }
 }

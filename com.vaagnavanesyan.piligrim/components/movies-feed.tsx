@@ -18,7 +18,7 @@ export const MoviesFeed = () => {
         // console.log(`Loading page: ${page}\tFeed length: ${dashboard.length}\tExpected: ${page * 36}`);
         setLoading(true);
         const result = await ApiService.getDashboard(page);
-        setDashboard([...dashboard, ...result.films]);
+        setDashboard([...dashboard, ...result.movies]);
         setSlider(result.slider);
         setLoading(false);
     };

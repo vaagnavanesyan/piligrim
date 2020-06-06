@@ -1,7 +1,7 @@
 import { ObjectType, Field } from 'type-graphql';
 
 @ObjectType()
-export class FilmSummary {
+export class MovieSummary {
   @Field() name: string;
   @Field() genre: string;
   @Field() duration: string;

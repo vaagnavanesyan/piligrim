@@ -5,9 +5,9 @@ import { ParserService } from '../../site-parser/parser/parser.service';
 export class ApiController {
   constructor(private readonly parser: ParserService) {}
 
-  @Get('/films/:id')
-  getFilm(@Param('id') id) {
-    return this.parser.getFilm(id);
+  @Get('/movies/:id')
+  getMovie(@Param('id') id) {
+    return this.parser.getMovie(id);
   }
 
   @Get('/dashboard')

@@ -1,4 +1,4 @@
-export const FilmPageSelector = {
+export const MoviePageSelector = {
   description: '.product-short-description',
   name: '.entry-title',
   genre: {

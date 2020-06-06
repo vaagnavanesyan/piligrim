@@ -5,7 +5,7 @@
 
 type DashboardResult {
   slider: [SliderItem!]!
-  films: [FilmSummary!]!
+  movies: [MovieSummary!]!
   isLastPage: Boolean!
 }
 
@@ -14,7 +14,12 @@ type FestivalItem {
   nomination: String!
 }
 
-type Film {
+type Image {
+  full: String!
+  preview: String!
+}
+
+type Movie {
   description: String!
   name: String!
   duration: Float!
@@ -26,7 +31,7 @@ type Film {
   kinopoiskPage: String!
 }
 
-type FilmSummary {
+type MovieSummary {
   name: String!
   genre: String!
   duration: String!
@@ -34,13 +39,8 @@ type FilmSummary {
   poster: String!
 }
 
-type Image {
-  full: String!
-  preview: String!
-}
-
 type Query {
-  film(name: String!): Film!
+  movie(name: String!): Movie!
   dashboard(page: Float = 0): DashboardResult!
 }
 
