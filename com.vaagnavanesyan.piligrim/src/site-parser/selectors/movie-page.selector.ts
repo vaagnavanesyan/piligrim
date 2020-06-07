@@ -44,7 +44,7 @@ export const MoviePageSelector = {
   images: {
     listItem: '#nm-product-images-slider a',
     data: {
-      full: { attr: 'href' },
+      full: {attr: 'href'},
       preview: {
         selector: 'img',
         attr: 'src',

@@ -1,6 +1,6 @@
-import { MovieSummary } from './movie-summary';
-import { ObjectType, Field } from 'type-graphql';
-import { SliderItem } from './slider-item';
+import {MovieSummary} from './movie-summary';
+import {ObjectType, Field} from 'type-graphql';
+import {SliderItem} from './slider-item';
 
 @ObjectType()
 export class DashboardResult {

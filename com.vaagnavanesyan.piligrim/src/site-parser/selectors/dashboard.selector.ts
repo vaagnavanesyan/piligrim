@@ -24,12 +24,12 @@ export const DashboardSelector = {
         selector: '.loop-genre-time',
         convert: (x: string) => parseInt(x.split('\n')[1].trim(), 10) * 60,
       },
-      link: { selector: '.nm-shop-loop-thumbnail > a', attr: 'href' },
+      link: {selector: '.nm-shop-loop-thumbnail > a', attr: 'href'},
       poster: {
         selector: '.nm-shop-loop-thumbnail > a > img',
         attr: 'src',
       },
     },
   },
-  isLastPage: { selector: '.js-load-more', convert: x => !x },
+  isLastPage: {selector: '.js-load-more', convert: x => !x},
 };
