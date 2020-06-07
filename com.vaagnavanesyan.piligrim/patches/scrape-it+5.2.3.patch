@@ -1,0 +1,13 @@
+diff --git a/node_modules/scrape-it/lib/index.js b/node_modules/scrape-it/lib/index.js
+index 2c26fef..eba1ec9 100644
+--- a/node_modules/scrape-it/lib/index.js
++++ b/node_modules/scrape-it/lib/index.js
+@@ -7,7 +7,7 @@ var req = require("cheerio-req"),
+     objDef = require("obj-def"),
+     emptyObj = require("is-empty-obj"),
+     assured = require("assured"),
+-    cheerio = require("cheerio");
++    cheerio = require("react-native-cheerio");
+ 
+ /**
+  * scrapeIt

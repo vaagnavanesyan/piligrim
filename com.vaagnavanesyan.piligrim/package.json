@@ -12,7 +12,8 @@
     "start-android-release": "react-native run-android --variant release",
     "start-ios": "concurrently \"yarn start\" \"yarn ios\"",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
@@ -21,13 +22,19 @@
     "dotenv": "^8.2.0",
     "dotenv-load": "^2.0.0",
     "native-base": "^2.13.12",
+    "node-libs-react-native": "^1.2.0",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
+    "react-native-cheerio": "^1.0.0-rc.4",
     "react-native-gesture-handler": "1.6.0",
     "react-native-reanimated": "1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "2.2.0",
-    "react-native-snap-carousel": "^3.8.4"
+    "react-native-snap-carousel": "^3.8.4",
+    "react-native-url-polyfill": "^1.1.2",
+    "scrape-it": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "7.6.2",
