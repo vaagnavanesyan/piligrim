@@ -16,10 +16,9 @@ export class ParserService {
     return {movies, slider, isLastPage};
   }
   public static async getMovie(id: string): Promise<Movie> {
-    const {data} = await scrapeIt(
-      `${baseAddress}/film/${id}`,
-      MoviePageSelector,
-    );
+    const url = this.getAbsoluteUrl(id);
+    const html = await fetch(url).then(response => response.text());
+    const data = await scrapeIt.scrapeHTML(html, MoviePageSelector);
     return (data as unknown) as Movie;
   }
   public static getAbsoluteUrl(part: string) {

@@ -8,7 +8,7 @@ import {
   Linking,
 } from 'react-native';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {ParserService} from '../src/site-parser';
+import {ParserService} from '../../site-parser';
 
 const {width, height} = Dimensions.get('window');
 
@@ -27,7 +27,7 @@ const renderSlide = ({item}: any, parallaxProps: any) => {
       </View>
     </TouchableOpacity>
   );
-}
+};
 export const Slider = ({slider}: any) => {
   return (
     <Carousel
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'contain',
   },
-})
+});

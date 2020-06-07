@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import {Slider} from './slider';
-import {ParserService} from '../src/site-parser';
+import {ParserService} from '../../site-parser';
 
 export const MoviesFeed = () => {
   const [dashboard, setDashboard] = useState([] as any);
