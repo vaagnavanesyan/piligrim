@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/node_modules": true,
+        "**/Pods": true,
+        "**/.idea": true,
+        "**/.gradle": true,
+        "**/.DS_Store": true
+    }
+}
