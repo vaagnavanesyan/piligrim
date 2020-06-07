@@ -7,18 +7,18 @@ import {
   View,
   Linking,
 } from 'react-native';
-import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {ParserService} from '../../site-parser';
+import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import { ParserService } from '../../site-parser';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-const renderSlide = ({item}: any, parallaxProps: any) => {
+const renderSlide = ({ item }: any, parallaxProps: any) => {
   return (
     <TouchableOpacity
       onPress={() => Linking.openURL(ParserService.getAbsoluteUrl(item.link))}>
       <View style={styles.slide}>
         <ParallaxImage
-          source={{uri: item.image}}
+          source={{ uri: item.image }}
           containerStyle={styles.slideContainer}
           style={styles.slideImage}
           parallaxFactor={0.75}
@@ -28,7 +28,7 @@ const renderSlide = ({item}: any, parallaxProps: any) => {
     </TouchableOpacity>
   );
 };
-export const Slider = ({slider}: any) => {
+export const Slider = ({ slider }: any) => {
   return (
     <Carousel
       sliderWidth={width}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   slideContainer: {
     flex: 1,
-    marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
+    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
     backgroundColor: '#070215',
     borderRadius: 8,
   },

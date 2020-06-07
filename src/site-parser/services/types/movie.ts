@@ -1,5 +1,5 @@
-import {FestivalItem} from './festival-item';
-import {Image} from './image';
+import { FestivalItem } from './festival-item';
+import { Image } from './image';
 export interface Movie {
   description: string;
   name: string;

@@ -12,6 +12,7 @@
     "start-android-release": "react-native run-android --variant release",
     "start-ios": "concurrently \"yarn start\" \"yarn ios\"",
     "test": "jest",
+    "lint-fix":"prettier --write \"./**/*.{ts,tsx, js, jsx}\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "patch-package"
   },

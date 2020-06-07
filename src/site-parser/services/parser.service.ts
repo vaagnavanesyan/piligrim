@@ -1,7 +1,7 @@
 import scrapeIt from 'scrape-it';
-import {DashboardResult, Movie} from './types';
-import {MoviePageSelector, DashboardSelector} from '../selectors';
-import {URL} from 'react-native-url-polyfill';
+import { DashboardResult, Movie } from './types';
+import { MoviePageSelector, DashboardSelector } from '../selectors';
+import { URL } from 'react-native-url-polyfill';
 const baseAddress = 'https://piligrim.fund';
 
 export class ParserService {
@@ -9,11 +9,11 @@ export class ParserService {
     const url = new URL(baseAddress);
     url.searchParams.set('page', page.toString());
     const html = await fetch(url.href).then(response => response.text());
-    const {movies, slider, isLastPage} = await scrapeIt.scrapeHTML(
+    const { movies, slider, isLastPage } = await scrapeIt.scrapeHTML(
       html,
-      DashboardSelector,
+      DashboardSelector
     );
-    return {movies, slider, isLastPage};
+    return { movies, slider, isLastPage };
   }
   public static async getMovie(id: string): Promise<Movie> {
     const url = this.getAbsoluteUrl(id);

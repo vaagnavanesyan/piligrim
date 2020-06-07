@@ -1,6 +1,6 @@
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
-import {ParserService} from '../../';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { ParserService } from '../../';
 
 const mockFetchToAsset = (filename: string) => {
   const html = readFileSync(
@@ -8,9 +8,9 @@ const mockFetchToAsset = (filename: string) => {
     resolve(__filename, `../../assets/${filename}`),
     {
       encoding: 'utf-8',
-    },
+    }
   );
-  const fetch = async () => ({text: async () => html});
+  const fetch = async () => ({ text: async () => html });
   global.fetch = fetch as any;
 };
 

@@ -1,5 +1,5 @@
-import {Right, Thumbnail} from 'native-base';
-import React, {useEffect, useState} from 'react';
+import { Right, Thumbnail } from 'native-base';
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -9,20 +9,18 @@ import {
   View,
 } from 'react-native';
 
-import {Slider} from './slider';
-import {ParserService} from '../../site-parser';
+import { Slider } from './slider';
+import { ParserService } from '../../site-parser';
 
 export const MoviesFeed = () => {
   const [dashboard, setDashboard] = useState([] as any);
   const [slider, setSlider] = useState([] as any);
   const [isLoading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
-  // idk better way how to implement multiple "Pull to refresh" and keep useEffect deendendent only on "page"
   const [refresh, triggerRefresh] = useState(false);
   const [stillScrolling, setScrolling] = useState(false);
 
   const fetchData = async () => {
-    // console.log(`Loading page: ${page}\tFeed length: ${dashboard.length}\tExpected: ${page * 36}`);
     setLoading(true);
     const result = await ParserService.getDashboard(page);
     setDashboard([...dashboard, ...result.movies]);
@@ -55,7 +53,7 @@ export const MoviesFeed = () => {
       style={styles.background}
       data={dashboard}
       ListHeaderComponent={<Slider slider={slider} />}
-      renderItem={({item}) => <Movie movie={item} />}
+      renderItem={({ item }) => <Movie movie={item} />}
       keyExtractor={(item: any) => item.link}
       initialNumToRender={10}
       ListFooterComponent={isLoading ? Footer : null}
@@ -80,7 +78,7 @@ class Movie extends React.Component<any> {
         <Thumbnail
           square
           large
-          source={{uri: this.props.movie.poster}}
+          source={{ uri: this.props.movie.poster }}
           style={styles.moviePoster}
         />
         <View style={styles.movieTextContainer}>

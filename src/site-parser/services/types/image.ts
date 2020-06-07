@@ -1,7 +1,4 @@
-import {Field, ObjectType} from 'type-graphql';
-
-@ObjectType()
-export class Image {
-  @Field() full: string;
-  @Field() preview: string;
+export interface Image {
+  full: string;
+  preview: string;
 }
