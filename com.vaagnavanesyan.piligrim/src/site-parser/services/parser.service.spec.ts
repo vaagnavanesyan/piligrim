@@ -1,4 +1,4 @@
-import { ParserService } from './parser.service';
+import {ParserService} from './parser.service';
 
 describe('ParserService', () => {
   let parser: ParserService;
