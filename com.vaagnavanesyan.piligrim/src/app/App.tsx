@@ -9,7 +9,7 @@
  */
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {MoviesFeed} from './app/components/movies-feed';
+import {MoviesFeed} from './components/movies-feed';
 
 const App = () => {
   return (

@@ -1,11 +1,11 @@
-import {ParserService} from '../../../../src/site-parser';
 import {readFileSync} from 'fs';
 import {resolve} from 'path';
+import {ParserService} from '../../';
 
 const mockFetchToAsset = (filename: string) => {
   const html = readFileSync(
     // eslint-disable-next-line no-undef
-    resolve(__filename, `../../../../assets/${filename}`),
+    resolve(__filename, `../../assets/${filename}`),
     {
       encoding: 'utf-8',
     },
