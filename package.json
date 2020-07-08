@@ -12,7 +12,7 @@
     "start-android-release": "react-native run-android --variant release",
     "start-ios": "concurrently \"yarn start\" \"yarn ios\"",
     "test": "jest",
-    "lint-fix":"prettier --write \"./**/*.{ts,tsx, js, jsx}\"",
+    "lint-fix": "prettier --write \"./**/*.{ts,tsx, js, jsx}\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "patch-package"
   },
@@ -26,8 +26,8 @@
     "node-libs-react-native": "^1.2.0",
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
-    "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
     "react-native-cheerio": "^1.0.0-rc.4",
     "react-native-gesture-handler": "1.6.0",
     "react-native-reanimated": "1.7.0",
@@ -51,8 +51,8 @@
     "concurrently": "5.1.0",
     "eslint": "6.5.1",
     "jest": "25.3.0",
-    "metro-react-native-babel-preset": "0.56.0",
-    "react-test-renderer": "16.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react-test-renderer": "16.11.0",
     "typescript": "3.8.3"
   },
   "jest": {
