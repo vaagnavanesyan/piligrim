@@ -1,30 +1,25 @@
 import React from 'react';
 import {
   Dimensions,
+  Image,
+  Linking,
   Platform,
   StyleSheet,
   TouchableOpacity,
   View,
-  Linking,
-  Image,
 } from 'react-native';
-import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel';
+
 import { ParserService } from '../../site-parser';
 
 const { width, height } = Dimensions.get('window');
 
-const renderSlide = ({ item }: any, parallaxProps: any) => {
+const renderSlide = ({ item }: any) => {
   return (
     <TouchableOpacity
       onPress={() => Linking.openURL(ParserService.getAbsoluteUrl(item.link))}>
       <View style={styles.slide}>
-        <ParallaxImage
-          source={{ uri: item.image }}
-          containerStyle={styles.slideContainer}
-          style={styles.slideImage}
-          parallaxFactor={0.75}
-          {...parallaxProps}
-        />
+        <Image style={styles.slideContainer} source={{ uri: item.image }} />
       </View>
     </TouchableOpacity>
   );
