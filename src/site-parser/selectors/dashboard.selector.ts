@@ -31,5 +31,5 @@ export const DashboardSelector = {
       },
     },
   },
-  isLastPage: { selector: '.js-load-more', convert: x => !x },
+  isLastPage: { selector: '.js-load-more', convert: (x) => !x },
 };

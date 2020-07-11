@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Linking,
+  Image,
 } from 'react-native';
 import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
 import { ParserService } from '../../site-parser';

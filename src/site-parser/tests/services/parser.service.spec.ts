@@ -8,7 +8,7 @@ const mockFetchToAsset = (filename: string) => {
     resolve(__filename, `../../assets/${filename}`),
     {
       encoding: 'utf-8',
-    }
+    },
   );
   const fetch = async () => ({ text: async () => html });
   global.fetch = fetch as any;

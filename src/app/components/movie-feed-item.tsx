@@ -1,4 +1,3 @@
-import { Right, Thumbnail } from 'native-base';
 import React from 'react';
 import {
   Text,
@@ -6,6 +5,7 @@ import {
   View,
   StyleSheet,
   Linking,
+  Image,
 } from 'react-native';
 import { ParserService } from '../../site-parser';
 export class MovieFeedItem extends React.Component<any> {
@@ -23,9 +23,9 @@ export class MovieFeedItem extends React.Component<any> {
         style={styles.movie}
         onPress={() => this.handleClick()}
         key={this.props.movie.name}>
-        <Thumbnail
-          square
-          large
+        <Image
+          width={128}
+          height={128}
           source={{ uri: this.props.movie.poster }}
           style={styles.moviePoster}
         />
@@ -33,11 +33,11 @@ export class MovieFeedItem extends React.Component<any> {
           <Text style={styles.movieName}>{this.props.movie.name}</Text>
           <Text style={styles.movieGenre}>{this.props.movie.genre}</Text>
         </View>
-        <Right>
+        <View>
           <Text style={styles.movieDuration}>
             {this.props.movie.duration / 60} мин
           </Text>
-        </Right>
+        </View>
       </TouchableOpacity>
     );
   }

@@ -21,7 +21,7 @@ export const MoviePageSelector = {
     listItem: '#tab-product-festivals li',
     data: {
       title: {
-        convert: x => {
+        convert: (x) => {
           const match = x.match(/– (?<title>(.*))\s-\s(?<nomination>(.*))/);
           if (!match || !match.groups.title) {
             return '';
@@ -30,7 +30,7 @@ export const MoviePageSelector = {
         },
       },
       nomination: {
-        convert: x => {
+        convert: (x) => {
           const match = x.match(/– (?<title>(.*))\s-\s(?<nomination>(.*))/);
           if (!match || !match.groups.nomination) {
             return '';
@@ -59,7 +59,7 @@ export const MoviePageSelector = {
   },
   kinopoiskPage: {
     selector: '.icon-link-ext',
-    how: x => {
+    how: (x) => {
       if (!x[0] || !x[0].parent) {
         return '';
       }

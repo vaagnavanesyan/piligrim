@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface PiligrimTests : XCTestCase
+@interface piligrimTests : XCTestCase
 
 @end
 
-@implementation PiligrimTests
+@implementation piligrimTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
@@ -52,6 +52,7 @@
       return NO;
     }];
   }
+
 #ifdef DEBUG
   RCTSetLogFunction(RCTDefaultLogFunction);
 #endif
