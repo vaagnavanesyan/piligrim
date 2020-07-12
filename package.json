@@ -5,7 +5,8 @@
   "scripts": {
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "connect-android": "dotenv-load adb connect %android_ip%",
+    "build-android-release": "cd android && ./gradlew assembleRelease",
+    "build-android": "cd android && ./gradlew assembleDebug",
     "clean-android": "cd android && ./gradlew clean",
     "start": "react-native start",
     "start-android": "concurrently \"yarn start\" \"yarn android\"",
