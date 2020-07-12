@@ -17,12 +17,19 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.7.0",
+    "@react-navigation/stack": "^5.7.0",
     "node-libs-react-native": "^1.2.0",
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-cheerio": "^1.0.0-rc.4",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-reanimated": "^1.9.0",
+    "react-native-safe-area-context": "^3.1.1",
+    "react-native-screens": "^2.9.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-url-polyfill": "^1.1.2",
     "scrape-it": "^5.2.3"

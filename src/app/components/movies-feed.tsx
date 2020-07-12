@@ -5,7 +5,7 @@ import { ParserService } from '../../site-parser';
 import { MovieFeedItem } from './movie-feed-item';
 import { Slider } from './slider';
 
-export const MoviesFeed = () => {
+export const MoviesFeed = (props: any) => {
   const [dashboard, setDashboard] = useState([] as any);
   const [slider, setSlider] = useState([] as any);
   const [isLoading, setLoading] = useState(false);
@@ -42,7 +42,7 @@ export const MoviesFeed = () => {
 
   // Avoid re-render: https://github.com/facebook/react-native/issues/13602#issuecomment-300608431
   const header = () => <Slider slider={slider} />;
-  const renderItem = (item: any) => <MovieFeedItem movie={item} />;
+  const renderItem = (item: any) => <MovieFeedItem movie={item} {...props} />;
   return (
     <FlatList
       style={styles.background}

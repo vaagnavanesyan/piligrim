@@ -1,21 +1,13 @@
 import React from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-  Linking,
-  Image,
-} from 'react-native';
-import { ParserService } from '../../site-parser';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 export class MovieFeedItem extends React.Component<any> {
   shouldComponentUpdate() {
     return false;
   }
 
   async handleClick() {
-    const movie = await ParserService.getMovie(this.props.movie.link);
-    Linking.openURL(movie.video);
+    this.props.navigation.push('Movie', { movie: this.props.movie });
   }
   render() {
     return (
