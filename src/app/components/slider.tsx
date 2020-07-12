@@ -5,9 +5,9 @@ import {
   Linking,
   Platform,
   StyleSheet,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import Carousel from 'react-native-snap-carousel';
 
 import { ParserService } from '../../site-parser';
@@ -16,12 +16,12 @@ const { width, height } = Dimensions.get('window');
 
 const renderSlide = ({ item }: any) => {
   return (
-    <TouchableOpacity
+    <TouchableHighlight
       onPress={() => Linking.openURL(ParserService.getAbsoluteUrl(item.link))}>
       <View style={styles.slide}>
         <Image style={styles.slideContainer} source={{ uri: item.image }} />
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 export const Slider = ({ slider }: any) => {
