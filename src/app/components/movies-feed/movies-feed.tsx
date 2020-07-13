@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList } from 'react-native';
 
 import { ParserService } from '../../../site-parser';
 import { MovieFeedItem } from '../movie-feed-item';
 import { Slider } from '../slider';
+import { withTheme } from './styles';
+import { ThemeContext } from '../../themes';
 
 export const MoviesFeed = (props: any) => {
   const [dashboard, setDashboard] = useState([] as any);
@@ -40,9 +42,14 @@ export const MoviesFeed = (props: any) => {
     }
   };
 
+  const theme = useContext(ThemeContext);
+  const styles = withTheme(theme);
   // Avoid re-render: https://github.com/facebook/react-native/issues/13602#issuecomment-300608431
   const header = () => <Slider slider={slider} />;
   const renderItem = (item: any) => <MovieFeedItem movie={item} {...props} />;
+  const footer = () => (
+    <ActivityIndicator animating size="large" color={styles.movieName.color} />
+  );
   return (
     <FlatList
       style={styles.background}
@@ -51,7 +58,7 @@ export const MoviesFeed = (props: any) => {
       renderItem={({ item }) => renderItem(item)}
       keyExtractor={(item: any) => item.link}
       initialNumToRender={10}
-      ListFooterComponent={isLoading ? Footer : null}
+      ListFooterComponent={isLoading ? footer : null}
       onEndReachedThreshold={0.5}
       refreshing={false}
       onRefresh={() => doRefresh()}
@@ -60,19 +67,3 @@ export const MoviesFeed = (props: any) => {
     />
   );
 };
-
-const Footer = () => {
-  return (
-    <ActivityIndicator animating size="large" color={styles.movieName.color} />
-  );
-};
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#070215',
-  },
-  movieName: {
-    color: '#9B528E',
-    fontSize: 18,
-  },
-});

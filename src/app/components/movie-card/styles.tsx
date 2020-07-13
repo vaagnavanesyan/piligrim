@@ -34,6 +34,6 @@ export const withTheme = (theme: any) =>
     },
     movieDescription: {
       fontSize: 18,
-      color: theme.movieDescription,
+      color: theme.text,
     },
   });

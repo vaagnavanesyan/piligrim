@@ -56,7 +56,11 @@ export const MovieCard = (props: any) => {
               </Text>
             </View>
           </View>
-          <Button title="Смотреть" onPress={handleClick} />
+          <Button
+            title="Смотреть"
+            onPress={handleClick}
+            color={theme.buttonBackground}
+          />
           <Text style={styles.movieDescription}>{movie.description}</Text>
         </>
       )}

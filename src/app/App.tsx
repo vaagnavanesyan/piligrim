@@ -14,7 +14,7 @@ const MovieScreen = ({ route }: any) => <MovieCard {...route.params} />;
 
 const App = () => {
   return (
-    <ThemeContext.Provider value={Themes.dark}>
+    <ThemeContext.Provider value={Themes.light}>
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Dashboard">
