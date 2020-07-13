@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native';
 
 import { MovieCard } from './components/movie-card';
 import { MoviesFeed } from './components/movies-feed';
+import { Themes, ThemeContext } from './themes';
 
 const Stack = createStackNavigator();
 
@@ -14,22 +15,24 @@ const MovieScreen = ({ route }: any) => <MovieCard {...route.params} />;
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Dashboard">
-          <Stack.Screen
-            name="Dashboard"
-            component={DashboardScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Movie"
-            component={MovieScreen}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <ThemeContext.Provider value={Themes.dark}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Dashboard">
+            <Stack.Screen
+              name="Dashboard"
+              component={DashboardScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Movie"
+              component={MovieScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </ThemeContext.Provider>
   );
 };
 
