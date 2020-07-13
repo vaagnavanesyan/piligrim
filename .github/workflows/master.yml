@@ -34,5 +34,25 @@ jobs:
     - name: Copy build artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: release
-        path: android/app/build/outputs/apk/release/
+        name: app-arm64-v8a-release.apk
+        path: android/app/build/outputs/apk/release/app-arm64-v8a-release.apk
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: app-armeabi-v7a-release.apk
+        path: android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: app-x86-release.apk
+        path: android/app/build/outputs/apk/release/app-x86-release.apk
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: app-x86_64-release.apk
+        path: android/app/build/outputs/apk/release/app-x86_64-release.apk
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: app-universal-release.apk
+        path: android/app/build/outputs/apk/release/app-universal-release.apk
