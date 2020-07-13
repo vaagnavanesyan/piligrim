@@ -6,7 +6,7 @@ const baseAddress = 'https://piligrim.fund';
 
 export class ParserService {
   public static async getDashboard(page: number = 0): Promise<DashboardResult> {
-    console.log('GET DASHBOARD: ' + page);
+    console.log(`GET DASHBOARD: ${page}`);
     const url = new URL(baseAddress);
     url.searchParams.set('page', page.toString());
     const html = await fetch(url.href).then((response) => response.text());
@@ -17,7 +17,7 @@ export class ParserService {
     return { movies, slider, isLastPage };
   }
   public static async getMovie(id: string): Promise<Movie> {
-    console.log('GET MOVIE: ' + id);
+    console.log(`GET MOVIE: ${id}`);
     const url = this.getAbsoluteUrl(id);
     const html = await fetch(url).then((response) => response.text());
     const data = await scrapeIt.scrapeHTML(html, MoviePageSelector);
