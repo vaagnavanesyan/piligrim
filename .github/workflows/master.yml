@@ -23,10 +23,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn
-    - run: yarn test
-    - run: yarn build-android-release
-    - uses: actions/upload-artifact@v1
+    - name: Install NDK
+      run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+    - name: Install Node.js dependencies
+      run: yarn
+    - name: Run tests
+      run: yarn test
+    - name: Build Android Release apk
+      run: yarn build-android-release
+    - name: Copy build artifacts
+      uses: actions/upload-artifact@v1
       with:
         name: release
         path: android/app/build/outputs/apk/release/*.apk
