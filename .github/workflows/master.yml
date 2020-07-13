@@ -5,9 +5,9 @@ name: Build Android and iOS apps
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -18,41 +18,69 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install NDK
-      run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
-    - name: Install Node.js dependencies
-      run: yarn
-    - name: Run tests
-      run: yarn test
-    - name: Build Android Release apk
-      run: yarn build-android-release
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: app-arm64-v8a-release.apk
-        path: android/app/build/outputs/apk/release/app-arm64-v8a-release.apk
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: app-armeabi-v7a-release.apk
-        path: android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: app-x86-release.apk
-        path: android/app/build/outputs/apk/release/app-x86-release.apk
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: app-x86_64-release.apk
-        path: android/app/build/outputs/apk/release/app-x86_64-release.apk
-    - name: Copy build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: app-universal-release.apk
-        path: android/app/build/outputs/apk/release/app-universal-release.apk
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install NDK
+        run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+      - name: Install Node.js dependencies
+        run: yarn
+      - name: Run tests
+        run: yarn test
+      - name: Build Android Release apk
+        run: yarn build-android-release
+      - name: Copy build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-arm64-v8a-release.apk
+          path: android/app/build/outputs/apk/release/app-arm64-v8a-release.apk
+      - name: Copy build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-armeabi-v7a-release.apk
+          path: android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk
+      - name: Copy build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-x86-release.apk
+          path: android/app/build/outputs/apk/release/app-x86-release.apk
+      - name: Copy build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-x86_64-release.apk
+          path: android/app/build/outputs/apk/release/app-x86_64-release.apk
+      - name: Copy build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-universal-release.apk
+          path: android/app/build/outputs/apk/release/app-universal-release.apk
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload app-universal-release.apk
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: android/app/build/outputs/apk/release/app-universal-release.apk
+          asset_name: app-universal-release.apk
+          asset_content_type: application/vnd.android.package-archive
+      - name: Upload app-x86_64-release.apk
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: android/app/build/outputs/apk/release/app-x86_64-release.apk
+          asset_name: app-x86_64-release.apk
+          asset_content_type: application/vnd.android.package-archive
