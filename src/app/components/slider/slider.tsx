@@ -10,7 +10,7 @@ import {
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import Carousel from 'react-native-snap-carousel';
 
-import { ParserService } from '../../site-parser';
+import { ParserService } from '../../../site-parser';
 
 const { width, height } = Dimensions.get('window');
 

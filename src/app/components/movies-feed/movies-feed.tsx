@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
 
-import { ParserService } from '../../site-parser';
-import { MovieFeedItem } from './movie-feed-item';
-import { Slider } from './slider';
+import { ParserService } from '../../../site-parser';
+import { MovieFeedItem } from '../movie-feed-item';
+import { Slider } from '../slider';
 
 export const MoviesFeed = (props: any) => {
   const [dashboard, setDashboard] = useState([] as any);

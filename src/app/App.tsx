@@ -3,8 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-import { MovieCard } from './components/movie-card';
-import { MoviesFeed } from './components/movies-feed';
+import { MoviesFeed, MovieCard } from './components';
 import { Themes, ThemeContext } from './themes';
 
 const Stack = createStackNavigator();
