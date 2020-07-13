@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Image,
   Linking,
@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { ParserService } from '../../site-parser';
+import { ParserService } from '../../../site-parser';
 import { Movie } from 'src/site-parser/services/types';
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+import { ThemeContext } from '../../themes';
+import { withTheme } from './styles';
 
 export const MovieCard = (props: any) => {
   const [movie, setMovie] = useState({} as Movie);
@@ -33,16 +34,12 @@ export const MovieCard = (props: any) => {
     const movie = await ParserService.getMovie(props.movie.link);
     Linking.openURL(movie.video);
   };
+  const theme = useContext(ThemeContext);
+  const styles = withTheme(theme);
 
   return (
     <ScrollView style={styles.background}>
-      {isLoading && (
-        <ActivityIndicator
-          animating
-          size="large"
-          color={styles.movieName.color}
-        />
-      )}
+      {isLoading && <ActivityIndicator animating size="large" />}
       {!isLoading && (
         <>
           <View style={styles.movieInfoContainer}>
@@ -60,41 +57,9 @@ export const MovieCard = (props: any) => {
             </View>
           </View>
           <Button title="Смотреть" onPress={handleClick} />
-          <Text style={styles.movieDuration}>{movie.description}</Text>
+          <Text style={styles.movieDescription}>{movie.description}</Text>
         </>
       )}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    backgroundColor: '#070215',
-  },
-  movieInfoContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  moviePoster: {
-    flex: 3,
-    width: screenWidth,
-    height: 0.5 * screenHeight,
-  },
-  movieTextContainer: {
-    marginTop: 30,
-    marginLeft: 10,
-    flex: 4,
-  },
-  movieName: {
-    color: '#9B528E',
-    fontSize: 24,
-  },
-  movieDuration: {
-    color: '#7992D2',
-    fontSize: 20,
-  },
-  movieGenre: {
-    color: '#C7BDDF',
-    fontSize: 18,
-  },
-});

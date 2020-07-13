@@ -1,11 +1,15 @@
-import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+
+import { ThemeContext } from '../../themes';
+import { withTheme } from './styles';
 
 export const MovieFeedItem = (props: any) => {
   const handleClick = async () => {
     props.navigation.push('Movie', { movie: props.movie });
   };
-
+  const theme = useContext(ThemeContext);
+  const styles = withTheme(theme);
   return (
     <TouchableOpacity
       style={styles.movie}
@@ -29,29 +33,3 @@ export const MovieFeedItem = (props: any) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  movie: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginVertical: 10,
-  },
-  moviePoster: {
-    flex: 1,
-  },
-  movieTextContainer: {
-    marginLeft: 10,
-    flex: 4,
-  },
-  movieName: {
-    color: '#9B528E',
-    fontSize: 18,
-  },
-  movieDuration: {
-    color: '#7992D2',
-    flex: 1,
-  },
-  movieGenre: {
-    color: '#C7BDDF',
-  },
-});
